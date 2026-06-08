@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="description" content="A real, current breakdown of the cost of living in Manchester in 2026 — rent, council tax, bills, transport, and groceries, with honest monthly totals for singles, couples and families.">
-<title>Manchester Cost of Living Breakdown 2026 | The Move Guide</title>
+<meta name="description" content="Free Manchester cost of living calculator. Estimate your monthly costs and compare against London, Birmingham, Leeds, Bristol and Edinburgh using real 2026 data.">
+<title>Manchester Cost of Living Calculator | The Move Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--navy:#1a2332;--navy-light:#253347;--light:#f5f7fa;--light-card:#ffffff;--light-border:#e2e8f0;--text-dark:#1e293b;--text-dark-muted:#64748b;--text-light:#ffffff;--text-light-muted:#94a3b8;--teal:#14b8a6;--teal-bright:#2dd4bf;--orange:#f97316;--font:'Sora',system-ui,sans-serif;--max:720px;--radius:12px}
 html{scroll-behavior:smooth}
-body{font-family:var(--font);color:var(--text-dark);background:var(--navy);line-height:1.8;-webkit-font-smoothing:antialiased}
+body{font-family:var(--font);color:var(--text-dark);background:var(--navy);line-height:1.7;-webkit-font-smoothing:antialiased}
 nav{position:fixed;top:0;width:100%;background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--light-border);z-index:100;padding:0 24px}
 .nav-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}
 .nav-logo{text-decoration:none;display:flex;align-items:center}
@@ -22,28 +22,40 @@ nav{position:fixed;top:0;width:100%;background:rgba(255,255,255,0.95);backdrop-f
 .tmg .guide{font-weight:300;color:var(--navy)}
 .tmg .arrow{font-weight:800;color:var(--orange);margin-left:4px}
 .nav-cta{background:var(--orange);color:#fff;padding:8px 16px;border-radius:8px;font-weight:600;font-size:0.85rem;text-decoration:none}
-.hero-article{background:var(--navy);padding:120px 24px 60px;text-align:center}
-.hero-article h1{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;color:var(--text-light);letter-spacing:-0.03em;line-height:1.15;max-width:var(--max);margin:0 auto 16px}
-.hero-article h1 em{font-style:normal;color:var(--teal)}
-.hero-article p{color:var(--text-light-muted);font-size:0.95rem;max-width:540px;margin:0 auto}
-.hero-article .meta{color:var(--text-light-muted);font-size:0.8rem;margin-top:16px}
-article{max-width:var(--max);margin:0 auto;padding:48px 24px 80px;background:var(--navy);color:#e2e8f0}
-article h2{font-size:1.5rem;font-weight:800;color:#7dd3fc;margin:48px 0 16px;letter-spacing:-0.02em}
-article h3{font-size:1.1rem;font-weight:700;color:var(--teal);margin:32px 0 12px}
-article p{margin-bottom:16px;color:#cbd5e1;font-size:0.95rem;line-height:1.8}
-article strong{color:#ffffff}
-article ul,article ol{margin:0 0 16px 24px;color:#e2e8f0}
-article li{margin-bottom:8px;font-size:0.95rem;line-height:1.7;color:#cbd5e1}
-.cta-box{background:var(--navy-light);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius);padding:32px;text-align:center;margin:48px 0}
-.cta-box h3{color:var(--text-light);font-size:1.2rem;margin:0 0 8px}
-.cta-box p{color:var(--text-light-muted);font-size:0.9rem;margin-bottom:16px}
+.hero-tool{background:var(--navy);padding:110px 24px 32px;text-align:center}
+.hero-tool h1{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;color:var(--text-light);letter-spacing:-0.03em;line-height:1.15;max-width:var(--max);margin:0 auto 12px}
+.hero-tool h1 em{font-style:normal;color:var(--teal)}
+.hero-tool p{color:var(--text-light-muted);font-size:0.95rem;max-width:540px;margin:0 auto}
+.tool-wrap{max-width:var(--max);margin:0 auto;padding:24px 24px 80px}
+.panel{background:var(--navy-light);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius);padding:28px 24px;margin-bottom:20px}
+.panel h2{color:#7dd3fc;font-size:1.1rem;font-weight:700;margin-bottom:20px}
+.field{margin-bottom:22px}
+.field label{display:block;color:var(--text-light);font-size:0.9rem;font-weight:600;margin-bottom:10px}
+.field .val{color:var(--teal-bright);font-weight:700}
+.field input[type=range]{width:100%;height:6px;border-radius:3px;background:#3a4a5e;outline:none;-webkit-appearance:none;appearance:none}
+.field input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:22px;height:22px;border-radius:50%;background:var(--teal);cursor:pointer;border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.3)}
+.field input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--teal);cursor:pointer;border:3px solid #fff}
+.seg{display:flex;gap:8px;flex-wrap:wrap}
+.seg button{flex:1;min-width:90px;background:#2a3a4e;border:1px solid rgba(255,255,255,0.1);color:var(--text-light-muted);padding:12px 8px;border-radius:8px;font-family:var(--font);font-size:0.85rem;font-weight:600;cursor:pointer;transition:all .2s}
+.seg button.active{background:var(--teal);color:#fff;border-color:var(--teal)}
+.result{background:linear-gradient(135deg,var(--navy-light),#2a3a4e);border:1px solid rgba(20,184,166,0.3);border-radius:var(--radius);padding:32px 24px;text-align:center;margin-bottom:20px}
+.result .lbl{color:var(--text-light-muted);font-size:0.85rem;text-transform:uppercase;letter-spacing:0.08em;font-weight:600}
+.result .big{color:#fff;font-size:2.6rem;font-weight:800;letter-spacing:-0.02em;margin:8px 0}
+.result .sub{color:var(--text-light-muted);font-size:0.85rem}
+.breakdown{list-style:none;margin:20px 0 0;padding:20px 0 0;border-top:1px solid rgba(255,255,255,0.1)}
+.breakdown li{display:flex;justify-content:space-between;padding:7px 0;color:#cbd5e1;font-size:0.9rem}
+.breakdown li span:last-child{color:#fff;font-weight:600}
+.compare h2{color:#7dd3fc;font-size:1.1rem;font-weight:700;margin-bottom:16px}
+.bar-row{margin-bottom:14px}
+.bar-row .city{display:flex;justify-content:space-between;color:#e2e8f0;font-size:0.85rem;margin-bottom:5px}
+.bar-row .city b{color:#fff}
+.bar-track{height:10px;background:#2a3a4e;border-radius:5px;overflow:hidden}
+.bar-fill{height:100%;border-radius:5px;transition:width .4s ease}
+.note{color:var(--text-light-muted);font-size:0.78rem;margin-top:16px;line-height:1.6}
+.cta-box{background:var(--navy-light);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius);padding:28px;text-align:center;margin-top:24px}
+.cta-box h3{color:var(--text-light);font-size:1.1rem;margin:0 0 8px}
+.cta-box p{color:var(--text-light-muted);font-size:0.88rem;margin-bottom:16px}
 .cta-box a{display:inline-block;background:var(--orange);color:#fff;padding:12px 24px;border-radius:10px;font-weight:600;text-decoration:none;font-size:0.95rem}
-.cost-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:0.9rem}
-.cost-table th,.cost-table td{text-align:left;padding:12px 14px;border-bottom:1px solid rgba(255,255,255,0.08)}
-.cost-table th{color:var(--teal-bright);font-weight:700}
-.cost-table td{color:#cbd5e1}
-.cost-table td:last-child{color:#fff;font-weight:600;text-align:right}
-.cost-table tr.total td{color:#fff;font-weight:700;border-top:2px solid rgba(255,255,255,0.15)}
 footer{background:var(--navy);border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:center}
 .footer-links{display:flex;justify-content:center;gap:24px;margin-bottom:8px;flex-wrap:wrap}
 .footer-links a{color:var(--text-light-muted);text-decoration:none;font-size:0.8rem}
@@ -54,92 +66,155 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,0.06);paddin
 <body>
 <nav><div class="nav-inner"><a href="/" class="nav-logo"><span class="tmg"><span class="the">the</span><span class="move">move</span><span class="guide">guide</span><span class="arrow">&#8594;</span></span></a><a href="/#checklist" class="nav-cta">Free Checklist</a></div></nav>
 
-<div class="hero-article">
-<h1>The Real Cost of Living in <em>Manchester</em> in 2026</h1>
-<p>Rent, council tax, bills, transport and groceries &#8212; honest monthly totals for singles, couples, and families, using current 2026 figures.</p>
-<div class="meta">Updated June 2026 &#183; 9 min read</div>
+<div class="hero-tool">
+<h1>Manchester <em>Cost of Living</em> Calculator</h1>
+<p>Estimate your monthly costs and see how Manchester compares to other UK cities. Built on real 2026 data.</p>
 </div>
 
-<article>
-<p>&quot;How much do I actually need to live in Manchester?&quot; It's the question everyone asks and the one most guides answer vaguely. Here's a straight, current breakdown using 2026 data &#8212; no rounding up to scare you, no rounding down to sell you.</p>
+<div class="tool-wrap">
+<div class="panel">
+<h2>Your situation</h2>
 
-<p>For context: official ONS figures put the average private rent across Manchester at around &#163;1,349 a month in early 2026, up 3% year on year. But that average spans everything from city-centre penthouses to suburban terraces, so the realistic figure for you depends heavily on property type and area.</p>
+<div class="field">
+<label>Household: <span class="val" id="hhLabel">Single person</span></label>
+<div class="seg" id="household">
+<button type="button" data-mult="1" class="active">Single</button>
+<button type="button" data-mult="1.55">Couple</button>
+<button type="button" data-mult="2.1">Family</button>
+</div>
+</div>
 
-<h2>Rent: The Big One</h2>
+<div class="field">
+<label>Property type &amp; area: <span class="val" id="propLabel">1-bed mid</span></label>
+<div class="seg" id="property">
+<button type="button" data-rent="750">1-bed budget</button>
+<button type="button" data-rent="900" class="active">1-bed mid</button>
+<button type="button" data-rent="1150">1-bed central</button>
+<button type="button" data-rent="1058">2-bed house</button>
+<button type="button" data-rent="1296">3-bed house</button>
+</div>
+</div>
 
-<p>Rent is by far the largest and most variable cost. Using current Greater Manchester figures for flats:</p>
+<div class="field">
+<label>Lifestyle / leisure spend: <span class="val" id="lifeLabel">&#163;250/mo</span></label>
+<input type="range" id="leisure" min="0" max="800" step="50" value="250">
+</div>
 
-<ul>
-<li><strong>One-bedroom flat:</strong> around &#163;844/month average, ranging from roughly &#163;700 in cheaper suburbs to &#163;1,300+ in Ancoats or the city centre.</li>
-<li><strong>Two-bedroom flat:</strong> around &#163;1,032/month average.</li>
-<li><strong>Two-bedroom house:</strong> around &#163;1,058/month, often with a garden and parking.</li>
-<li><strong>Three-bedroom house:</strong> around &#163;1,296/month.</li>
-</ul>
+<div class="field">
+<label>Transport: <span class="val" id="transLabel">Tram/Bus pass</span></label>
+<div class="seg" id="transport">
+<button type="button" data-trans="75" class="active">Tram/Bus pass</button>
+<button type="button" data-trans="250">Run a car</button>
+<button type="button" data-trans="0">Walk/cycle</button>
+</div>
+</div>
+</div>
 
-<p>The single most expensive flat postcode is M4 (city centre/Ancoats), averaging around &#163;1,645/month. The cheaper end sits in outer Greater Manchester boroughs.</p>
+<div class="result">
+<div class="lbl">Estimated monthly cost in Manchester</div>
+<div class="big" id="total">&#163;1,500</div>
+<div class="sub" id="annual">around &#163;18,000 per year</div>
+<ul class="breakdown" id="breakdown"></ul>
+</div>
 
-<h2>A Realistic Monthly Budget: Single Person</h2>
-
-<p>Here's a typical month for one person renting a one-bedroom flat in a decent area:</p>
-
-<table class="cost-table">
-<tr><th>Item</th><th>Monthly cost</th></tr>
-<tr><td>Rent (1-bed, decent area)</td><td>&#163;900</td></tr>
-<tr><td>Council tax (after 25% single discount)</td><td>&#163;110</td></tr>
-<tr><td>Utilities (gas, electric, water)</td><td>&#163;150</td></tr>
-<tr><td>Broadband</td><td>&#163;30</td></tr>
-<tr><td>Transport (Metrolink/bus pass)</td><td>&#163;75</td></tr>
-<tr><td>Groceries</td><td>&#163;220</td></tr>
-<tr><td>Phone</td><td>&#163;15</td></tr>
-<tr class="total"><td>Total (before leisure)</td><td>&#163;1,500</td></tr>
-</table>
-
-<p>Add &#163;200&#8211;&#163;400 for socialising, gym, subscriptions and the occasional treat, and a comfortable single-person budget lands around <strong>&#163;1,700&#8211;&#163;1,900/month</strong>.</p>
-
-<h2>Key Costs Explained</h2>
-
-<h3>Council Tax</h3>
-<p>Charged by band, typically &#163;100&#8211;&#163;160/month for a one or two-bed. <strong>If you live alone, claim the 25% single-person discount</strong> &#8212; an enormous number of newcomers forget and overpay for months. Apply through Manchester City Council's website as soon as you move in.</p>
-
-<h3>Utilities</h3>
-<p>Expect &#163;130&#8211;&#163;170/month for a one-bed, higher in winter. Take meter readings the day you move in and submit them immediately to avoid being billed for the previous tenant's usage.</p>
-
-<!-- AFFILIATE PLACEHOLDER: energy switching / comparison link once Awin advertiser approved -->
-
-<h3>Broadband</h3>
-<p>&#163;25&#8211;&#163;40/month. Virgin Media, BT, and Sky cover most of the city; Hyperoptic offers very fast fibre in many city-centre buildings. Order it two to three weeks before you move &#8212; installation slots fill up.</p>
-
-<!-- AFFILIATE PLACEHOLDER: broadband comparison / provider link once Awin advertiser approved -->
-
-<h3>Transport</h3>
-<p>A Metrolink pass is around &#163;72/month, a bus pass around &#163;75, and a combined tram-and-bus ticket roughly &#163;95. Compare this with London, where a zones 1&#8211;2 travelcard is about &#163;170/month &#8212; transport is roughly half the price here.</p>
+<div class="panel compare">
+<h2>How Manchester compares</h2>
+<div id="compareBars"></div>
+<p class="note">Comparisons use relative cost-of-living indices vs Manchester (London ~1.34x overall; Bristol ~1.12x; Edinburgh ~1.10x; Leeds ~0.97x; Birmingham ~0.98x). Estimates only &#8212; your actual costs will vary by exact address and lifestyle.</p>
+</div>
 
 <div class="cta-box">
-<h3>Get Your Personalised Cost Estimate</h3>
-<p>Our free calculator tailors these numbers to your situation and compares Manchester against London, Birmingham, Leeds, Bristol and Edinburgh.</p>
-<a href="/#tools">Try the Calculator &#8594;</a>
+<h3>Get the Free Relocation Checklist</h3>
+<p>Now you know the costs &#8212; get the 47-point checklist to plan the move itself.</p>
+<a href="/#checklist">Download the Checklist &#8594;</a>
 </div>
-
-<h2>Couples and Families</h2>
-
-<p>For a <strong>couple</strong>, rent stays the same if you share a one or two-bed, but you lose the single-person council tax discount and grocery/utility costs rise modestly. A realistic combined budget is around &#163;2,400&#8211;&#163;2,900/month including some leisure.</p>
-
-<p>For a <strong>family</strong> needing a two or three-bed house (&#163;1,058&#8211;&#163;1,296/month rent), with higher utilities, groceries, and childcare, budgets typically start around &#163;3,000&#8211;&#163;3,800/month before childcare, which can add significantly depending on ages.</p>
-
-<h2>How Manchester Compares</h2>
-
-<p>The headline figure most people care about: Manchester is roughly <strong>25% cheaper to live in than London overall</strong>, with rent specifically 50&#8211;60% lower for a comparable property. In salary terms, a &#163;35,000 Manchester salary stretches about as far as &#163;51,500 in London. That gap is the single biggest reason people make the move north.</p>
-
-<h2>The Honest Summary</h2>
-
-<p>A single person can live comfortably in Manchester on &#163;1,700&#8211;&#163;1,900/month, a couple on &#163;2,400&#8211;&#163;2,900, and a family on &#163;3,000+ depending on childcare. Rent is the variable that matters most &#8212; get that decision right (see our neighbourhoods guide) and the rest of the budget follows. Compared with London and the South East, Manchester remains genuinely excellent value, even with rents having risen in recent years.</p>
-
-<p><em>Figures based on 2026 ONS and Greater Manchester rental data. Last updated: June 2026.</em></p>
-</article>
+</div>
 
 <footer>
 <div class="footer-links"><a href="/">Home</a><a href="/#guides">All Guides</a><a href="/#checklist">Free Checklist</a><a href="mailto:hello&#64;themoveguide.co.uk">Contact</a></div>
 <p class="footer-copy">&#169; 2026 themoveguide.co.uk. All rights reserved.</p>
 </footer>
+
+<script>
+(function(){
+  var mult = 1, rent = 900, leisure = 250, trans = 75;
+  var cityIndex = {London:1.34, Bristol:1.12, Edinburgh:1.10, Manchester:1.00, Birmingham:0.98, Leeds:0.97};
+  var cityColors = {London:'#f97316', Bristol:'#fbbf24', Edinburgh:'#a78bfa', Manchester:'#2dd4bf', Birmingham:'#60a5fa', Leeds:'#34d399'};
+
+  function gbp(n){ return '\u00A3' + Math.round(n).toLocaleString('en-GB'); }
+
+  function calc(){
+    var councilTax = (mult === 1) ? 110 : 150;
+    var utilities = 150 * (mult > 1 ? 1.25 : 1);
+    var broadband = 30;
+    var groceries = 220 * mult;
+    var phone = 15 * (mult >= 2 ? 2 : 1);
+    var leisureAdj = leisure * (mult > 1 ? 1.4 : 1);
+    var transportAdj = trans * (mult >= 2 ? 1.6 : 1);
+    var total = rent + councilTax + utilities + broadband + groceries + phone + leisureAdj + transportAdj;
+
+    document.getElementById('total').innerHTML = gbp(total);
+    document.getElementById('annual').innerHTML = 'around ' + gbp(total * 12) + ' per year';
+
+    var bd = [['Rent',rent],['Council tax',councilTax],['Utilities',utilities],['Broadband',broadband],['Groceries',groceries],['Phone',phone],['Transport',transportAdj],['Leisure',leisureAdj]];
+    var bdHtml = '';
+    for (var i = 0; i < bd.length; i++){
+      bdHtml += '<li><span>' + bd[i][0] + '</span><span>' + gbp(bd[i][1]) + '</span></li>';
+    }
+    document.getElementById('breakdown').innerHTML = bdHtml;
+
+    var cities = Object.keys(cityIndex);
+    var maxVal = total * cityIndex.London;
+    var barsHtml = '';
+    for (var j = 0; j < cities.length; j++){
+      var c = cities[j];
+      var v = total * cityIndex[c];
+      var pct = (v / maxVal) * 100;
+      var label = c + (c === 'Manchester' ? ' (you)' : '');
+      barsHtml += '<div class="bar-row"><div class="city"><span>' + label + '</span><b>' + gbp(v) + '</b></div><div class="bar-track"><div class="bar-fill" style="width:' + pct + '%;background:' + cityColors[c] + '"></div></div></div>';
+    }
+    document.getElementById('compareBars').innerHTML = barsHtml;
+  }
+
+  function setActive(groupId, btn){
+    var btns = document.getElementById(groupId).getElementsByTagName('button');
+    for (var i = 0; i < btns.length; i++){ btns[i].className = btns[i].className.replace(' active',''); }
+    btn.className += ' active';
+  }
+
+  document.getElementById('household').addEventListener('click', function(e){
+    if (e.target.tagName !== 'BUTTON') return;
+    mult = parseFloat(e.target.getAttribute('data-mult'));
+    var t = e.target.textContent;
+    document.getElementById('hhLabel').textContent = (t === 'Single') ? 'Single person' : t;
+    setActive('household', e.target);
+    calc();
+  });
+
+  document.getElementById('property').addEventListener('click', function(e){
+    if (e.target.tagName !== 'BUTTON') return;
+    rent = parseFloat(e.target.getAttribute('data-rent'));
+    document.getElementById('propLabel').textContent = e.target.textContent;
+    setActive('property', e.target);
+    calc();
+  });
+
+  document.getElementById('transport').addEventListener('click', function(e){
+    if (e.target.tagName !== 'BUTTON') return;
+    trans = parseFloat(e.target.getAttribute('data-trans'));
+    document.getElementById('transLabel').textContent = e.target.textContent;
+    setActive('transport', e.target);
+    calc();
+  });
+
+  document.getElementById('leisure').addEventListener('input', function(e){
+    leisure = parseFloat(e.target.value);
+    document.getElementById('lifeLabel').innerHTML = '\u00A3' + leisure + '/mo';
+    calc();
+  });
+
+  calc();
+})();
+</script>
 </body>
 </html>
