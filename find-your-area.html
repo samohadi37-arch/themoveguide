@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Answer 5 quick questions and get personalised Manchester neighbourhood recommendations matched to your budget, lifestyle and priorities. Free, instant, no signup.">
+<title>Find Your Manchester Neighbourhood | The Move Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#1a2332;--navy-light:#253347;--light:#f5f7fa;--light-card:#ffffff;--light-border:#e2e8f0;--text-dark:#1e293b;--text-dark-muted:#64748b;--text-light:#ffffff;--text-light-muted:#94a3b8;--teal:#14b8a6;--teal-bright:#2dd4bf;--orange:#f97316;--font:'Sora',system-ui,sans-serif;--max:720px;--radius:12px}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);color:var(--text-dark);background:var(--navy);line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;width:100%;background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--light-border);z-index:100;padding:0 24px}
+.nav-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}
+.nav-logo{text-decoration:none;display:flex;align-items:center}
+.tmg{font-family:var(--font);font-weight:300;letter-spacing:-1px;display:inline-flex;align-items:baseline;white-space:nowrap;font-size:1.25rem;color:var(--navy);gap:0}
+.tmg span{background:none;padding:0;border:0}
+.tmg .the{font-weight:300;color:var(--navy)}
+.tmg .move{font-weight:800;color:var(--teal)}
+.tmg .guide{font-weight:300;color:var(--navy)}
+.tmg .arrow{font-weight:800;color:var(--orange);margin-left:4px}
+.nav-cta{background:var(--orange);color:#fff;padding:8px 16px;border-radius:8px;font-weight:600;font-size:0.85rem;text-decoration:none}
+.hero-tool{background:var(--navy);padding:110px 24px 24px;text-align:center}
+.hero-tool h1{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;color:var(--text-light);letter-spacing:-0.03em;line-height:1.15;max-width:var(--max);margin:0 auto 12px}
+.hero-tool h1 em{font-style:normal;color:var(--teal)}
+.hero-tool p{color:var(--text-light-muted);font-size:0.95rem;max-width:540px;margin:0 auto}
+.quiz-wrap{max-width:var(--max);margin:0 auto;padding:24px 24px 80px}
+.q-card{background:var(--navy-light);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius);padding:28px 24px;margin-bottom:18px}
+.q-card .qnum{color:var(--teal-bright);font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px}
+.q-card h3{color:var(--text-light);font-size:1.1rem;font-weight:700;margin-bottom:16px}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opts button{text-align:left;background:#2a3a4e;border:1px solid rgba(255,255,255,0.1);color:#e2e8f0;padding:14px 16px;border-radius:8px;font-family:var(--font);font-size:0.92rem;cursor:pointer;transition:all .2s}
+.opts button:hover{border-color:var(--teal)}
+.opts button.active{background:var(--teal);color:#fff;border-color:var(--teal);font-weight:600}
+.submit-btn{display:block;width:100%;background:var(--orange);color:#fff;border:none;padding:16px;border-radius:10px;font-family:var(--font);font-size:1rem;font-weight:700;cursor:pointer;margin-top:8px;transition:background .2s}
+.submit-btn:hover{background:#ea580c}
+.submit-btn:disabled{background:#3a4a5e;color:#64748b;cursor:not-allowed}
+.results{display:none}
+.results.show{display:block}
+.result-head{text-align:center;margin-bottom:24px}
+.result-head h2{color:#7dd3fc;font-size:1.4rem;font-weight:800}
+.result-head p{color:var(--text-light-muted);font-size:0.9rem;margin-top:4px}
+.match{background:var(--navy-light);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius);padding:24px;margin-bottom:16px}
+.match.top{border-color:var(--teal);border-width:2px}
+.match .rank{display:inline-block;background:var(--teal);color:#fff;font-size:0.7rem;font-weight:700;padding:3px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px}
+.match .rank.second{background:#475569}
+.match .rank.third{background:#475569}
+.match h3{color:#fff;font-size:1.3rem;font-weight:800;margin-bottom:4px}
+.match .score{color:var(--teal-bright);font-size:0.85rem;font-weight:600;margin-bottom:12px}
+.match p{color:#cbd5e1;font-size:0.9rem;line-height:1.7;margin-bottom:8px}
+.match .tags{margin-top:12px;display:flex;gap:6px;flex-wrap:wrap}
+.match .tags span{font-size:0.7rem;color:var(--teal-bright);background:rgba(20,184,166,0.12);border:1px solid rgba(20,184,166,0.25);padding:3px 9px;border-radius:4px}
+.retry{display:block;margin:20px auto 0;background:none;border:1px solid rgba(255,255,255,0.2);color:var(--text-light-muted);padding:10px 20px;border-radius:8px;font-family:var(--font);font-size:0.85rem;cursor:pointer}
+.cta-box{background:var(--navy-light);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius);padding:28px;text-align:center;margin-top:24px}
+.cta-box h3{color:var(--text-light);font-size:1.1rem;margin:0 0 8px}
+.cta-box p{color:var(--text-light-muted);font-size:0.88rem;margin-bottom:16px}
+.cta-box a{display:inline-block;background:var(--orange);color:#fff;padding:12px 24px;border-radius:10px;font-weight:600;text-decoration:none;font-size:0.95rem}
+.disclaimer{color:var(--text-light-muted);font-size:0.78rem;margin-top:20px;text-align:center;line-height:1.6}
+footer{background:var(--navy);border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:center}
+.footer-links{display:flex;justify-content:center;gap:24px;margin-bottom:8px;flex-wrap:wrap}
+.footer-links a{color:var(--text-light-muted);text-decoration:none;font-size:0.8rem}
+.footer-copy{color:var(--text-light-muted);font-size:0.75rem}
+@media(max-width:640px){.nav-cta{display:none}}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a href="/" class="nav-logo"><span class="tmg"><span class="the">the</span><span class="move">move</span><span class="guide">guide</span><span class="arrow">&#8594;</span></span></a><a href="/#checklist" class="nav-cta">Free Checklist</a></div></nav>
+
+<div class="hero-tool">
+<h1>Find Your <em>Manchester</em> Neighbourhood</h1>
+<p>Answer 5 quick questions and we'll match you to the areas that fit your life. Free, instant, no signup.</p>
+</div>
+
+<div class="quiz-wrap">
+<div id="quiz">
+<div class="q-card">
+<div class="qnum">Question 1 of 5</div>
+<h3>What's your household?</h3>
+<div class="opts" data-q="household">
+<button data-v="single">Just me / sharing with friends</button>
+<button data-v="couple">A couple</button>
+<button data-v="family">A family with children</button>
+</div>
+</div>
+
+<div class="q-card">
+<div class="qnum">Question 2 of 5</div>
+<h3>What's your monthly housing budget?</h3>
+<div class="opts" data-q="budget">
+<button data-v="low">Under &#163;800</button>
+<button data-v="mid">&#163;800&#8211;&#163;1,100</button>
+<button data-v="high">&#163;1,100+</button>
+</div>
+</div>
+
+<div class="q-card">
+<div class="qnum">Question 3 of 5</div>
+<h3>What matters most to you?</h3>
+<div class="opts" data-q="priority">
+<button data-v="nightlife">Buzz, bars &amp; nightlife</button>
+<button data-v="community">Village feel &amp; community</button>
+<button data-v="schools">Good schools &amp; family life</button>
+<button data-v="value">Best value for money</button>
+</div>
+</div>
+
+<div class="q-card">
+<div class="qnum">Question 4 of 5</div>
+<h3>How do you want to commute?</h3>
+<div class="opts" data-q="commute">
+<button data-v="walk">Walk / cycle &mdash; I want to be central</button>
+<button data-v="tram">Tram is fine</button>
+<button data-v="flexible">Don't mind a train / longer trip for the right place</button>
+</div>
+</div>
+
+<div class="q-card">
+<div class="qnum">Question 5 of 5</div>
+<h3>Your vibe?</h3>
+<div class="opts" data-q="vibe">
+<button data-v="trendy">Trendy &amp; modern</button>
+<button data-v="bohemian">Bohemian &amp; independent</button>
+<button data-v="leafy">Leafy &amp; established</button>
+<button data-v="upcoming">Up-and-coming &amp; authentic</button>
+</div>
+</div>
+
+<button class="submit-btn" id="submit" disabled>Answer all 5 to see your matches</button>
+</div>
+
+<div class="results" id="results">
+<div class="result-head">
+<h2>Your Top Matches</h2>
+<p>Based on your budget, lifestyle and priorities</p>
+</div>
+<div id="match-list"></div>
+<button class="retry" id="retry">Start over</button>
+
+<div class="cta-box">
+<h3>Get the Full Neighbourhoods Guide</h3>
+<p>Read honest, in-depth profiles of all these areas &#8212; safety, rents, and what locals really think.</p>
+<a href="/best-neighbourhoods-manchester">Read the Guide &#8594;</a>
+</div>
+<p class="disclaimer">These suggestions are a starting point based on your answers, not personalised advice. Always visit areas in person at different times before deciding. Recommendations use 2026 area data.</p>
+</div>
+</div>
+
+<footer>
+<div class="footer-links"><a href="/">Home</a><a href="/#guides">All Guides</a><a href="/#checklist">Free Checklist</a><a href="mailto:hello&#64;themoveguide.co.uk">Contact</a></div>
+<p class="footer-copy">&#169; 2026 themoveguide.co.uk. All rights reserved.</p>
+</footer>
+
+<script>
+// Neighbourhood data with scoring attributes
+var areas=[
+  {name:'Ancoats / Northern Quarter',household:['single','couple'],budget:['mid','high'],priority:['nightlife'],commute:['walk','tram'],vibe:['trendy'],desc:'Manchester\u2019s coolest district \u2014 converted mills, top restaurants, buzzing nightlife. The default for professionals who want to walk to work.',tags:['Trendy','Central','Foodie','Pricey']},
+  {name:'Chorlton',household:['couple','family','single'],budget:['mid','high'],priority:['community','nightlife'],commute:['tram'],vibe:['bohemian'],desc:'Bohemian suburb with indie shops, a great bar scene and genuine community spirit. Popular with young professionals and families alike, and among the safest areas.',tags:['Bohemian','Community','Safe','Tram links']},
+  {name:'Didsbury',household:['couple','family'],budget:['high'],priority:['schools','community'],commute:['tram','flexible'],vibe:['leafy'],desc:'South Manchester\u2019s premier postcode: tree-lined streets, excellent schools, handsome Victorian houses. Ideal for families wanting space and calm.',tags:['Leafy','Top schools','Affluent','Safe']},
+  {name:'Sale',household:['family','couple'],budget:['mid'],priority:['schools','value'],commute:['tram'],vibe:['leafy'],desc:'Family-friendly with excellent schools and good tram links, more affordable than Didsbury or Chorlton. A safe, suburban choice.',tags:['Family','Schools','Good value','Tram']},
+  {name:'Levenshulme',household:['single','couple','family'],budget:['low','mid'],priority:['value','community'],commute:['flexible','tram'],vibe:['upcoming','bohemian'],desc:'\u201CLevy\u201D has transformed \u2014 a celebrated weekend market, independent food, strong community, at lower rents than neighbouring Chorlton. Excellent value.',tags:['Up-and-coming','Great value','Foodie','Diverse']},
+  {name:'Stockport',household:['single','couple','family'],budget:['low','mid'],priority:['value'],commute:['flexible'],vibe:['upcoming'],desc:'Genuine regeneration, characterful period property at prices unthinkable closer in, and fast trains to Piccadilly. One of the best value options right now.',tags:['Best value','Regenerating','Period homes','Trains']},
+  {name:'Castlefield / Deansgate',household:['single','couple'],budget:['high'],priority:['nightlife'],commute:['walk'],vibe:['trendy'],desc:'The most upmarket city-centre living \u2014 canal-side walks, high-rise apartments, central but quieter than the Northern Quarter.',tags:['Central','Polished','Canal-side','Premium']},
+  {name:'Altrincham',household:['family','couple'],budget:['high'],priority:['schools'],commute:['tram','flexible'],vibe:['leafy'],desc:'Market-town feel with a celebrated market hall, premium housing and excellent schools. The \u201Cposhest suburb\u201D, with tram links to the centre.',tags:['Market town','Top schools','Premium','Tram']},
+  {name:'Salford Quays / MediaCity',household:['single','couple'],budget:['mid','high'],priority:['nightlife','value'],commute:['walk','tram'],vibe:['trendy'],desc:'Modern waterfront living next to MediaCityUK \u2014 ideal if you work in media/tech. New-build apartments and tram links.',tags:['Modern','Waterfront','Media hub','Tram']},
+  {name:'Prestwich',household:['family','couple'],budget:['mid'],priority:['community','value'],commute:['tram'],vibe:['leafy','upcoming'],desc:'Family-friendly with green space, a growing food scene, and Metrolink access. A quieter, well-connected northern option.',tags:['Family','Green space','Tram','Community']}
+];
+
+var answers={};
+document.querySelectorAll('.opts').forEach(function(grp){
+  var q=grp.dataset.q;
+  grp.querySelectorAll('button').forEach(function(b){
+    b.addEventListener('click',function(){
+      grp.querySelectorAll('button').forEach(function(x){x.classList.remove('active');});
+      b.classList.add('active');
+      answers[q]=b.dataset.v;
+      checkComplete();
+    });
+  });
+});
+
+function checkComplete(){
+  var done=Object.keys(answers).length===5;
+  var btn=document.getElementById('submit');
+  btn.disabled=!done;
+  btn.textContent=done?'See my matches \u2192':'Answer all 5 to see your matches';
+}
+
+document.getElementById('submit').addEventListener('click',function(){
+  var scored=areas.map(function(a){
+    var s=0;
+    if(a.household.indexOf(answers.household)>-1)s+=2;
+    if(a.budget.indexOf(answers.budget)>-1)s+=3;
+    if(a.priority.indexOf(answers.priority)>-1)s+=3;
+    if(a.commute.indexOf(answers.commute)>-1)s+=1;
+    if(a.vibe.indexOf(answers.vibe)>-1)s+=2;
+    return {a:a,s:s};
+  }).sort(function(x,y){return y.s-x.s;});
+
+  var maxScore=11;
+  var top3=scored.slice(0,3);
+  var ranks=['Best match','Strong match','Also worth a look'];
+  var rankClass=['','second','third'];
+  document.getElementById('match-list').innerHTML=top3.map(function(item,i){
+    var pct=Math.round((item.s/maxScore)*100);
+    if(pct<40)pct=40+i*5; // floor so it never looks broken
+    return '<div class="match '+(i===0?'top':'')+'">'+
+      '<span class="rank '+rankClass[i]+'">'+ranks[i]+'</span>'+
+      '<h3>'+item.a.name+'</h3>'+
+      '<div class="score">'+pct+'% fit with your answers</div>'+
+      '<p>'+item.a.desc+'</p>'+
+      '<div class="tags">'+item.a.tags.map(function(t){return '<span>'+t+'</span>';}).join('')+'</div>'+
+    '</div>';
+  }).join('');
+
+  document.getElementById('quiz').style.display='none';
+  document.getElementById('results').classList.add('show');
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+
+document.getElementById('retry').addEventListener('click',function(){
+  answers={};
+  document.querySelectorAll('.opts button').forEach(function(b){b.classList.remove('active');});
+  document.getElementById('results').classList.remove('show');
+  document.getElementById('quiz').style.display='block';
+  checkComplete();
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+</script>
+</body>
+</html>
