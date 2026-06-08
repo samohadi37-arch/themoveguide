@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="The complete guide to getting around Manchester in 2026 — Metrolink trams, the Bee Network, fares, commute times, cycling, and whether you need a car. Includes a commute-time lookup tool.">
+<title>Manchester Transport & Commute Guide 2026 | The Move Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#1a2332;--navy-light:#253347;--light:#f5f7fa;--light-card:#ffffff;--light-border:#e2e8f0;--text-dark:#1e293b;--text-dark-muted:#64748b;--text-light:#ffffff;--text-light-muted:#94a3b8;--teal:#14b8a6;--teal-bright:#2dd4bf;--orange:#f97316;--font:'Sora',system-ui,sans-serif;--max:720px;--radius:12px}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);color:var(--text-dark);background:var(--navy);line-height:1.8;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;width:100%;background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--light-border);z-index:100;padding:0 24px}
+.nav-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}
+.nav-logo{text-decoration:none;display:flex;align-items:center}
+.tmg{font-family:var(--font);font-weight:300;letter-spacing:-1px;display:inline-flex;align-items:baseline;white-space:nowrap;font-size:1.25rem;color:var(--navy);gap:0}
+.tmg span{background:none;padding:0;border:0}
+.tmg .the{font-weight:300;color:var(--navy)}
+.tmg .move{font-weight:800;color:var(--teal)}
+.tmg .guide{font-weight:300;color:var(--navy)}
+.tmg .arrow{font-weight:800;color:var(--orange);margin-left:4px}
+.nav-cta{background:var(--orange);color:#fff;padding:8px 16px;border-radius:8px;font-weight:600;font-size:0.85rem;text-decoration:none}
+.hero-article{background:var(--navy);padding:120px 24px 40px;text-align:center}
+.hero-article h1{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;color:var(--text-light);letter-spacing:-0.03em;line-height:1.15;max-width:var(--max);margin:0 auto 16px}
+.hero-article h1 em{font-style:normal;color:var(--teal)}
+.hero-article p{color:var(--text-light-muted);font-size:0.95rem;max-width:540px;margin:0 auto}
+.hero-article .meta{color:var(--text-light-muted);font-size:0.8rem;margin-top:16px}
+article{max-width:var(--max);margin:0 auto;padding:32px 24px 80px;background:var(--navy);color:#e2e8f0}
+article h2{font-size:1.5rem;font-weight:800;color:#7dd3fc;margin:48px 0 16px;letter-spacing:-0.02em}
+article h3{font-size:1.1rem;font-weight:700;color:var(--teal);margin:32px 0 12px}
+article p{margin-bottom:16px;color:#cbd5e1;font-size:0.95rem;line-height:1.8}
+article strong{color:#ffffff}
+article ul,article ol{margin:0 0 16px 24px;color:#e2e8f0}
+article li{margin-bottom:8px;font-size:0.95rem;line-height:1.7;color:#cbd5e1}
+.tool{background:var(--navy-light);border:1px solid rgba(20,184,166,0.3);border-radius:var(--radius);padding:28px 24px;margin:8px 0 32px}
+.tool h2{margin-top:0;color:#7dd3fc;font-size:1.2rem}
+.tool .sublabel{color:var(--text-light-muted);font-size:0.85rem;margin-bottom:20px}
+.tool label{display:block;color:var(--text-light);font-size:0.85rem;font-weight:600;margin:14px 0 8px}
+.tool select{width:100%;padding:13px 14px;border-radius:8px;border:1px solid rgba(255,255,255,0.15);background:#2a3a4e;color:#fff;font-family:var(--font);font-size:0.95rem}
+.tool-result{margin-top:20px;padding:20px;background:#2a3a4e;border-radius:8px;display:none}
+.tool-result.show{display:block}
+.tool-result .row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.08)}
+.tool-result .row:last-child{border-bottom:none}
+.tool-result .row .k{color:#cbd5e1;font-size:0.9rem}
+.tool-result .row .v{color:#fff;font-weight:700}
+.tool-result .v.big{color:var(--teal-bright);font-size:1.3rem}
+.cta-box{background:var(--navy-light);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius);padding:32px;text-align:center;margin:48px 0}
+.cta-box h3{color:var(--text-light);font-size:1.2rem;margin:0 0 8px}
+.cta-box p{color:var(--text-light-muted);font-size:0.9rem;margin-bottom:16px}
+.cta-box a{display:inline-block;background:var(--orange);color:#fff;padding:12px 24px;border-radius:10px;font-weight:600;text-decoration:none;font-size:0.95rem}
+footer{background:var(--navy);border-top:1px solid rgba(255,255,255,0.06);padding:24px;text-align:center}
+.footer-links{display:flex;justify-content:center;gap:24px;margin-bottom:8px;flex-wrap:wrap}
+.footer-links a{color:var(--text-light-muted);text-decoration:none;font-size:0.8rem}
+.footer-copy{color:var(--text-light-muted);font-size:0.75rem}
+@media(max-width:640px){.nav-cta{display:none}}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a href="/" class="nav-logo"><span class="tmg"><span class="the">the</span><span class="move">move</span><span class="guide">guide</span><span class="arrow">&#8594;</span></span></a><a href="/#checklist" class="nav-cta">Free Checklist</a></div></nav>
+
+<div class="hero-article">
+<h1>Getting Around <em>Manchester</em>: The 2026 Transport Guide</h1>
+<p>Trams, buses, trains, cycling and driving &#8212; how Manchester actually moves, what it costs, and whether you need a car.</p>
+<div class="meta">Updated June 2026 &#183; 9 min read</div>
+</div>
+
+<article>
+
+<div class="tool">
+<h2>Commute Lookup</h2>
+<div class="sublabel">Roughly how long will your daily commute take? Pick where you'd live and work.</div>
+<label for="from">I'd live in&hellip;</label>
+<select id="from">
+<option value="">Select area</option>
+<option value="ancoats" data-zone="1" data-tram="1" data-cc="5">Ancoats / Northern Quarter</option>
+<option value="castlefield" data-zone="1" data-tram="1" data-cc="5">Castlefield / Deansgate</option>
+<option value="chorlton" data-zone="2" data-tram="1" data-cc="20">Chorlton</option>
+<option value="didsbury" data-zone="3" data-tram="1" data-cc="25">Didsbury</option>
+<option value="sale" data-zone="3" data-tram="1" data-cc="28">Sale</option>
+<option value="altrincham" data-zone="3" data-tram="1" data-cc="35">Altrincham</option>
+<option value="salford" data-zone="1" data-tram="1" data-cc="15">Salford Quays / MediaCity</option>
+<option value="levenshulme" data-zone="2" data-tram="0" data-cc="20">Levenshulme</option>
+<option value="stockport" data-zone="4" data-tram="0" data-cc="30">Stockport</option>
+<option value="prestwich" data-zone="2" data-tram="1" data-cc="22">Prestwich</option>
+<option value="bury" data-zone="4" data-tram="1" data-cc="40">Bury</option>
+</select>
+<label for="to">I'd work in&hellip;</label>
+<select id="to">
+<option value="">Select destination</option>
+<option value="centre" data-z="1">City Centre (Piccadilly / St Peter's Sq)</option>
+<option value="mediacity" data-z="1">MediaCityUK / Salford Quays</option>
+<option value="spinningfields" data-z="1">Spinningfields (business district)</option>
+<option value="trafford" data-z="2">Trafford Park / Trafford Centre</option>
+<option value="airport" data-z="4">Manchester Airport</option>
+</select>
+<div class="tool-result" id="tool-result">
+<div class="row"><span class="k">Estimated journey time</span><span class="v big" id="r-time">&mdash;</span></div>
+<div class="row"><span class="k">Best mode</span><span class="v" id="r-mode">&mdash;</span></div>
+<div class="row"><span class="k">Fare zones</span><span class="v" id="r-zone">&mdash;</span></div>
+<div class="row"><span class="k">Rough monthly pass</span><span class="v" id="r-cost">&mdash;</span></div>
+</div>
+</div>
+
+<p>Manchester's transport is genuinely good &#8212; not London-comprehensive, but functional, affordable, and improving fast under the Bee Network. Here's how each part works and what it'll cost you.</p>
+
+<h2>Metrolink: The Tram Backbone</h2>
+
+<p>Metrolink is the heart of Manchester's transport. It now runs <strong>8 lines, 99 stops, and 103km of track</strong>, with trams every 6&#8211;12 minutes. Lines radiate from the city centre to Altrincham, Bury, Rochdale, Ashton-under-Lyne, East Didsbury, Eccles/MediaCityUK, the Trafford Centre, and Manchester Airport.</p>
+
+<p>Service runs roughly 6am to midnight (a little later Friday and Saturday), with no continuous overnight service. Living near a tram stop is one of the biggest quality-of-life factors in Manchester &#8212; and it adds roughly 10&#8211;15% to rents and property prices for good reason.</p>
+
+<h3>Fares &amp; zones</h3>
+<p>Metrolink uses <strong>four fare zones</strong> &#8212; Zone 1 is the city centre, Zone 4 the outskirts. You buy a ticket valid for the zones you travel through. Good news for your budget: <strong>tram fares are frozen for 2026</strong> &#8212; the sixth year running. Use contactless tap-in/tap-out with automatic daily and weekly fare capping, or a Bee Card season ticket. A typical city-zone monthly pass is around &#163;75.</p>
+
+<h3>Park &amp; Ride</h3>
+<p>Over 20 stops have Park &amp; Ride, and <strong>parking is free for tram customers</strong> &#8212; you only pay the tram fare. This is ideal if you live further out: drive to a stop like East Didsbury, Sale Water Park, or Bury, and tram into the centre, skipping city-centre parking costs entirely.</p>
+
+<h2>The Bee Network &amp; Buses</h2>
+
+<p>All Greater Manchester buses are now under public control as part of the <strong>Bee Network</strong> &#8212; the integrated, London-style system bringing trams, buses, and (from later in 2026) trains under one brand and ticketing.</p>
+
+<p>The killer feature is the fare: <strong>a flat &#163;2 single anywhere in Greater Manchester</strong>, capped for a fourth year in 2026. Even better, the <strong>Hopper Fare</strong> lets you change buses as many times as you like within one hour for that same &#163;2. Buses cover the areas trams don't reach, and some routes run 24 hours.</p>
+
+<!-- AFFILIATE PLACEHOLDER: none natural here -->
+
+<h2>Cycling</h2>
+
+<p>Manchester has invested heavily in cycling infrastructure, with growing segregated lanes (the "Bee Network" active-travel routes). Public hire bikes (Starling Bank Bikes, pedal and e-bikes) cover central Manchester and nearby areas, with docks near tram stops and universities. For central living, cycling is often the fastest door-to-door option.</p>
+
+<h2>Trains</h2>
+
+<p>For longer distances, Manchester is superbly connected. From Piccadilly (the main station): London Euston in about 2 hours, Leeds in 1 hour, Liverpool in 45 minutes, Birmingham in 90 minutes, and Edinburgh in around 3.5 hours. Rail is being progressively folded into the Bee Network through 2026, with combined train-and-tram tickets already available.</p>
+
+<h2>Do You Actually Need a Car?</h2>
+
+<p>The honest answer depends entirely on where you live and work:</p>
+
+<ul>
+<li><strong>Live centrally + work centrally:</strong> No. A car is more hassle than help &#8212; parking is expensive and scarce. Tram, bus, bike, and walking cover everything.</li>
+<li><strong>Live near a tram stop + work in the centre:</strong> No, or only for weekends. The tram handles your commute; consider car hire or a club car for occasional trips.</li>
+<li><strong>Live in the suburbs or work out-of-town:</strong> Probably yes, especially with children or an awkward cross-city commute that doesn't pass through the centre &#8212; the one journey type Manchester transport handles less well.</li>
+</ul>
+
+<p>Running a car in Manchester costs roughly &#163;200&#8211;&#163;300/month all-in (fuel, insurance, tax, parking), versus &#163;75&#8211;&#163;95 for a travel pass &#8212; so be honest about whether you genuinely need one before committing to that cost.</p>
+
+<div class="cta-box">
+<h3>Get the Free Relocation Checklist</h3>
+<p>Includes a "first week" transport setup list &#8212; getting your Bee Card, contactless capping, and more.</p>
+<a href="/#checklist">Download the Checklist &#8594;</a>
+</div>
+
+<h2>The Honest Summary</h2>
+
+<p>Manchester transport is affordable and steadily becoming more London-like under the Bee Network, with frozen tram fares and a flat &#163;2 bus cap making it genuinely cheap to get around. The single best decision you can make is to <strong>live near a Metrolink stop</strong> if you'll work in the centre &#8212; it transforms daily life. Outside the tram network, a car becomes more useful, so factor your likely commute into your choice of neighbourhood.</p>
+
+<p><em>Fares and network details based on 2026 TfGM/Bee Network data. Journey times in the tool are typical estimates &#8212; check tfgm.com for live times. Last updated: June 2026.</em></p>
+</article>
+
+<footer>
+<div class="footer-links"><a href="/">Home</a><a href="/#guides">All Guides</a><a href="/#checklist">Free Checklist</a><a href="mailto:hello&#64;themoveguide.co.uk">Contact</a></div>
+<p class="footer-copy">&#169; 2026 themoveguide.co.uk. All rights reserved.</p>
+</footer>
+
+<script>
+var from=document.getElementById('from'),to=document.getElementById('to'),res=document.getElementById('tool-result');
+function lookup(){
+  if(!from.value||!to.value){res.classList.remove('show');return;}
+  var fo=from.options[from.selectedIndex],to2=to.options[to.selectedIndex];
+  var fromZone=parseInt(fo.dataset.zone),hasTram=fo.dataset.tram==='1',toCentreMins=parseInt(fo.dataset.cc);
+  var dest=to.value;
+  var mins,mode,zones,cost;
+  // base: time to city centre from area
+  if(dest==='centre'||dest==='spinningfields'){
+    mins=toCentreMins; mode=hasTram?'Metrolink tram':'Train / bus'; 
+  } else if(dest==='mediacity'){
+    mins=toCentreMins+ (fo.value==='salford'?-10:12); mode=hasTram?'Tram (change at centre)':'Bus + tram';
+  } else if(dest==='trafford'){
+    mins=toCentreMins+15; mode='Tram (Trafford Park line)';
+  } else if(dest==='airport'){
+    mins=toCentreMins+30; mode=hasTram?'Tram (Airport line)':'Train';
+  }
+  if(mins<5)mins=15;
+  // zones: from area zone through to dest zone (simplify: max of the two, min zone 1)
+  var destZ=parseInt(to2.dataset.z);
+  var lowZ=Math.min(fromZone,1), highZ=Math.max(fromZone,destZ);
+  zones = lowZ===highZ ? ('Zone '+highZ) : ('Zones '+lowZ+'\u2013'+highZ);
+  // cost: rough monthly pass by zone span
+  var span=highZ-lowZ+1;
+  cost = span<=1?'~\u00a375':span===2?'~\u00a392':span===3?'~\u00a3110':'~\u00a3130';
+  if(!hasTram && (dest==='centre'||dest==='spinningfields')) {
+    cost='~\u00a375 (bus/train) or \u00a32/trip bus';
+  }
+  document.getElementById('r-time').textContent='~'+mins+' mins';
+  document.getElementById('r-mode').textContent=mode;
+  document.getElementById('r-zone').textContent=zones;
+  document.getElementById('r-cost').textContent=cost;
+  res.classList.add('show');
+}
+from.addEventListener('change',lookup);
+to.addEventListener('change',lookup);
+</script>
+</body>
+</html>
