@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://themoveguide.co.uk/sitemap.xml
